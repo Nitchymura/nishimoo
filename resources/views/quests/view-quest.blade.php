@@ -225,7 +225,7 @@
     </div> --}}
 </div>
 
-@vite(['resources/js/quest/view-quest.js'])
+@vite(['public/js/quest/view-quest.js'])
 <script type="text/javascript" src="{{ Vite::asset('resources/js/quest/map.js') }}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap&loading=async" async defer></script>
 @endsection
