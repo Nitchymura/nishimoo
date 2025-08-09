@@ -52,112 +52,85 @@ class BusinessController extends Controller
             ->with('categories', $categories);
     }
 
+// public function store(Request $request){
+//     $request->validate([
+//         'main_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+//         'photos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120'       
+//     ]);
+
+//     $this->business->category_id = $request->category_id;
+//     $this->business->user_id = Auth::user()->id;
+//     $this->business->name = $request->name;
+//     $this->business->term_start = $request->term_start;
+//     $this->business->term_end = $request->term_end;
+//     $this->business->introduction = $request->introduction;
+
+//     // main_imageをBase64エンコードして保存
+//     if ($request->hasFile('main_image')) {
+//         $mainImage = $request->file('main_image');
+//         $fileContent = file_get_contents($mainImage->getRealPath());
+//         $mimeType = $mainImage->getMimeType();
+//         $this->business->main_image = 'data:' . $mimeType . ';base64,' . base64_encode($fileContent);
+//     }
+
+//     $current_cert = $this->business->official_certification;
+
+//     $this->business->save();
+
+//     // PhotoController の store を呼び出して写真をBase64で保存
+//     $photoController = new PhotoController();
+//     if ($request->hasFile('photos')) {
+//         $photoController->store($request, $this->business->id); // PhotoControllerのstoreを呼び出し
+//     }
+
+//     return redirect()->route('profile.header', Auth::id());
+// }
+
 
     public function store(Request $request){
         $request->validate([
             'main_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
             'photos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120'       
-            // 'introduction' => 'required_if:official_certification,2|max:1000',
-            // 'phonenumber' => 'required_if:official_certification,2|max:20',
-            // 'zip' => 'required_if:official_certification,2|max:7',
-            // 'address_1' => 'required_if:official_certification,2|max:255'
-        ], [
-            // 'introduction.required_if' => 'Required for official certification badge',
-            // 'phonenumber.required_if' => 'Required for official certification badge',
-            // 'zip.required_if' => 'Required for official certification badge',
-            // 'address_1.required_if' => 'Required for official certification badge',
         ]);
 
         $this->business->category_id = $request->category_id;
         $this->business->user_id = Auth::user()->id;
         $this->business->name = $request->name;
-        // $this->business->email = $request->email;
-        // $this->business->term_start = $request->term_start;
-        // $this->business->term_end = $request->term_end;
+        $this->business->term_start = $request->term_start;
+        $this->business->term_end = $request->term_end;
         $this->business->introduction = $request->introduction;
-        // $this->business->status = $request->status;
-        // $this->business->sp_notes = $request->sp_notes;
-        // $this->business->address_1 = $request->address_1;
-        // $this->business->address_2 = $request->address_2;
-        // $this->business->zip = $request->zip;
-        // $this->business->phonenumber = $request->phonenumber;
-        // $this->business->website_url = $request->website_url;
-        // $this->business->instagram = $request->instagram;
-        // $this->business->facebook = $request->facebook;
-        // $this->business->x = $request->x;
-        // $this->business->tiktok = $request->tiktok;
-        // $this->business->identification_number = $request->identification_number;
-        // $this->business->display_start = $request->display_start;
-        // $this->business->display_end = $request->display_end;
-
-        // if($this->business->header){
-        //     $this->business->header = "data:image/".$this->business->header->extension().";base64,".base64_encode(file_get_contents($this->business->header));
-        // }
+        
         $this->business->main_image = "data:image/".$request->main_image->extension().";base64,".base64_encode (file_get_contents($request->main_image)); 
 
         $current_cert = $this->business->official_certification;
-
-        if ($current_cert == 3) {
-            if ($request->has('official_certification')) {
-                // チェックあり → 特別な認定を外して普通の認定に戻す
-                $this->business->official_certification = 2;
-            } else {
-                // チェックなし → 認定全部外す
-                $this->business->official_certification = 1;
-            }
-        } else {
-            if ($request->has('official_certification')) {
-                $this->business->official_certification = 2;
-            } else {
-                $this->business->official_certification = 1;
-            }
-        }
 
         $this->business->save();
 
         // PhotoController の store を呼び出して写真を保存
         if ($request->hasFile('photos')) {
-            foreach ($request->file('photos') as $i => $photo) {
-                if ($photo) {
-                    // 画像をストレージに保存
-                    $imagePath = $photo->store('images/businesses/photos', 'public');
-                    $priority = $request->input("priorities.$i") ?? ($i + 1);
-    
-                    Photo::create([
-                        'business_id' => $this->business->id,
-                        'image' => '/' . $imagePath,
-                        'priority' => $priority,
-                    ]);
-                }
-            }
+    foreach ($request->file('photos') as $i => $photo) {
+        if ($photo) {
+            // 画像ファイルの内容を読み込む
+            $fileContent = file_get_contents($photo->getRealPath());
+
+            // MIMEタイプを取得（例：image/jpeg）
+            $mimeType = $photo->getMimeType();
+
+            // Base64エンコードしてデータURLを作成
+            $base64Image = 'data:' . $mimeType . ';base64,' . base64_encode($fileContent);
+
+            // 優先度の設定
+            $priority = $request->input("priorities.$i") ?? ($i + 1);
+
+            // データベースに保存
+            Photo::create([
+                'business_id' => $this->business->id,
+                'image' => $base64Image,  // Base64形式で保存
+                'priority' => $priority,
+            ]);
         }
-
-        // 営業時間の保存
-        $businessHours = $request->input('business_hours', []);
-
-        // foreach ($businessHours as $day => $data) {
-        //     $this->business->businessHours()->create([
-        //         'day_of_week' => $day,
-        //         'opening_time' => $data['opening_time'] ?? null,
-        //         'closing_time' => $data['closing_time'] ?? null,
-        //         'break_start' => $data['break_start'] ?? null,
-        //         'break_end' => $data['break_end'] ?? null,
-        //         'notice' => $data['notice'] ?? null,
-        //         'is_closed' => isset($data['is_closed']), // チェックが入っているかどうかで判定
-        //     ]);
-        // }
-        
-    // BusinessDetailsも保存
-    // if ($request->has('business_info')) {
-    //     foreach ($request->business_info as $infoId) {
-    //         BusinessDetail::create([
-    //             'business_id' => $this->business->id,  // 新しく作ったBusinessのID
-    //             'business_info_id' => $infoId,
-    //             'is_valid' => true,
-    //         ]);
-    //     }
-    // }
-
+    }
+}
     
         return redirect()->route('profile.header', Auth::id());
     }
@@ -179,9 +152,6 @@ class BusinessController extends Controller
             'main_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
             'photos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',        
             'introduction' => 'max:1000',
-            // 'phonenumber' => 'required_if:official_certification,2|max:20',
-            // 'zip' => 'required_if:official_certification,2|max:7',
-            // 'address_1' => 'required_if:official_certification,2|max:255'
         ]);
 
         $business_a = $this->business->findOrFail($id);
@@ -195,12 +165,8 @@ class BusinessController extends Controller
         $business_a->main_image = "data:image/".$request->main_image->extension().";base64,".base64_encode(file_get_contents($request->main_image));
     }
 
-        // $business_a->email = $request->email;
-        // $business_a->zip = $request->zip;
-        // $business_a->phonenumber = $request->phonenumber;
-        // $business_a->address_1 = $request->address_1;
-        // $business_a->term_start = $request->term_start;
-        // $business_a->term_end = $request->term_end;
+        $business_a->term_start = $request->term_start;
+        $business_a->term_end = $request->term_end;
         $business_a->introduction = $request->introduction;
 
         $current_cert = $business_a->official_certification;
@@ -226,41 +192,6 @@ class BusinessController extends Controller
         $photoController = app(PhotoController::class);
         $photoController->update($request, $business_a);
 
-        // いったん既存のBusinessDetailsを削除
-        // BusinessHour::where('business_id', $id)->delete();
-        // 営業時間の保存
-        // $businessHours = $request->input('business_hours', []);
-
-        // foreach ($businessHours as $day => $data) {
-        //     $business_a->businessHours()->updateOrCreate(
-        //         [
-        //             'business_id' => $id,
-        //             'day_of_week' => $day,
-        //         ],
-        //         [
-        //             'opening_time' => $data['opening_time'] ?? null,
-        //             'closing_time' => $data['closing_time'] ?? null,
-        //             'break_start' => $data['break_start'] ?? null,
-        //             'break_end' => $data['break_end'] ?? null,
-        //             'notice' => $data['notice'] ?? null,
-        //             'is_closed' => isset($data['is_closed']),
-        //         ]
-        //     );
-        // }
-        
-    // いったん既存のBusinessDetailsを削除
-    // BusinessDetail::where('business_id', $id)->delete();
-
-    // 新しくBusinessDetailsを保存
-    // if ($request->has('business_info')) {
-    //     foreach ($request->business_info as $infoId) {
-    //         BusinessDetail::create([
-    //             'business_id' => $id,
-    //             'business_info_id' => $infoId,
-    //             'is_valid' => true,
-    //         ]);
-    //     }
-    // }
         
     return redirect()->route('profile.header', $business_a->user_id);
     }
