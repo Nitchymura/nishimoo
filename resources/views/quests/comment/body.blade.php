@@ -117,4 +117,4 @@
         <h4 class="h4 text-center text-secondary">No comments yet</h4> 
     @endforelse  
 
-    @vite('resources/js/quest/comment/quest-comment.js')
+    @vite('public/js/quest/comment/quest-comment.js')
