@@ -90,25 +90,21 @@
                                 <a href="{{ route('posts.all') }}" class="nav-link" href="">HOME</a>
                             </li>
                             <li class="nav-item dropdown my-auto">
-
+                                    @if (Auth::user()->role_id == 3)
                                     <a id="navbarDropdown" class="nav-link btn " href="#" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>+Add</a>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        @if (Auth::user()->role_id == 3)
-                                            <a href="{{ route('quest.add') }}" class="dropdown-item text-dark">
-                                                <i class="fa-solid fa-circle-plus icon-sm"></i> Travel
-                                            </a>
-                                            <a href="{{ route('businesses.create') }}" class="dropdown-item text-dark">
-                                                <i class="fa-solid fa-circle-plus icon-sm"></i> Favorite
-                                            </a>                                            
-                                            <a href="{{ route('spots.create') }}" class="dropdown-item text-dark">
-                                                <i class="fa-solid fa-circle-plus icon-sm"></i> Others
-                                            </a>
-                                       
-
-                                         
-                                        @endif
-                                    </div>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">                                       
+                                        <a href="{{ route('quest.add') }}" class="dropdown-item text-dark">
+                                            <i class="fa-solid fa-circle-plus icon-sm"></i> Travel
+                                        </a>
+                                        <a href="{{ route('businesses.create') }}" class="dropdown-item text-dark">
+                                            <i class="fa-solid fa-circle-plus icon-sm"></i> Favorite
+                                        </a>                                            
+                                        <a href="{{ route('spots.create') }}" class="dropdown-item text-dark">
+                                            <i class="fa-solid fa-circle-plus icon-sm"></i> Others
+                                        </a>                                      
+                                    </div> 
+                                    @endif
                             </li>
                             <li class="nav-item my-auto">
                                 <a href="{{ route('faq') }}" class="nav-link" href="">FAQ</a>
@@ -144,15 +140,7 @@
                                 <!-- Dropdown menu -->
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     {{-- PROFILE --}}
-                                    @if (Auth::user()->role_id == 1)
-                                        <a href="{{ route('profile.header', Auth::user()->id) }}" class="dropdown-item">
-                                            <i class="fa-solid fa-circle-user"></i> Profile
-                                        </a>
-                                    @elseif(Auth::user()->role_id == 2)
-                                        <a href="{{ route('profile.header', Auth::user()->id) }}" class="dropdown-item">
-                                            <i class="fa-solid fa-circle-user"></i> Profile
-                                        </a>
-                                    @elseif(Auth::user()->role_id == 3)
+                                    @if(Auth::user()->role_id == 3)
                                         @can('admin')
                                             <a href="{{ route('profile.header', Auth::user()->id) }}" class="dropdown-item">
                                                 <i class="fa-solid fa-circle-user"></i> Profile
@@ -162,8 +150,9 @@
                                                 <i class="fa-solid fa-circle-user"></i> Admin
                                             </a>
                                         @endcan
+                                    <hr class="dropdown-divider">    
                                     @endif
-                                    <hr class="dropdown-divider">
+                                    
                                     <a class="dropdown-item" href="{{ route('home') }}"
                                         onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
