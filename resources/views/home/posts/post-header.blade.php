@@ -55,5 +55,15 @@
 </div>
 <hr>
 
+<!-- 動的に表示されるコンテンツがここに -->
+<div id="content-container">
+    @yield('content') <!-- ここに各タブのコンテンツが表示される -->
+</div>
+
+@section('js')
+<!-- ビルドされたJavaScriptファイルを読み込む -->
+<script src="{{ mix('js/tab-switch.js') }}"></script>  <!-- mixを使ってビルドされたjsをリンク -->
+@endsection
+
 </main>
 
