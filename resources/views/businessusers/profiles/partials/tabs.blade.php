@@ -16,12 +16,12 @@
         </ul>
     @elseif(($user->role_id == 2  || $user->role_id == 3))
         <ul class="nav nav-tabs custom-tabs-black mt-4" role="tablist">
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link mx-4 {{ $tab == 'quests' ? 'active-tab' : '' }}"
                     href="{{ route('profile.header', ['id' => $user->id, 'tab' => 'quests']) }}">
                     Travels
                 </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link mx-4 {{ $tab == 'businesses' ? 'active-tab' : '' }}"
                     href="{{ route('profile.header', ['id' => $user->id, 'tab' => 'businesses']) }}">

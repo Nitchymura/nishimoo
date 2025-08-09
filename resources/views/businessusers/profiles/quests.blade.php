@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
     {{-- Model Quests --}}
-    <div class="row mb-1">
+    {{-- <div class="row mb-1">
         @forelse($quests as $post)
             @if(!$post['is_trashed'] || (Auth::check() && $post['user_id'] == Auth::id()))
                 <div class="col-lg-4 col-md-6 col-sm">
@@ -13,6 +13,6 @@
     </div>
     <div class="d-flex justify-content-end mb-5">
         {{ $quests->links() }}
-    </div>
+    </div> --}}
 </div>
 

@@ -416,7 +416,7 @@
 
                                 @default
                                     @include(
-                                        'businessusers.profiles.quests',['quests' => $quests]
+                                        'businessusers.profiles.show_businesses',['businesses' => $businesses]
                                     )
                             @endswitch
                         @endif

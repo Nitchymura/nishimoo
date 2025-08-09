@@ -47,20 +47,16 @@
             <div class="row mb-3">
                 @if (Request::is('home/posts/all*') || Request::is('home/posts/followings*'))
                 {{-- Category --}}
-                    <div class="col-md-auto col-sm-12 p-0">
+                    <div class="col-md-auto col-sm-12 p-0 me-0">
                         <h5 class="card-subtitle">Category: 
-                            @if($post['tab_id']==1)
-                                <strong>Spot</strong>
-                            @elseif($post['tab_id']==2)
-                                <strong>Travel</strong>
-                            @elseif($post['tab_id']==3)
+                            @if($post['tab_id']==3)
                                 <strong>Figure Skate</strong>
                             @elseif($post['tab_id']==4)
                                 <strong>Beer</strong>
                             @elseif($post['tab_id']==6)
                                 <strong>Others</strong>
                             @elseif($post['tab_id']==7)
-                                <strong>Travels</strong>
+                                <strong>Travel</strong>
                             @endif
                         </h5>
                     </div>
@@ -91,7 +87,7 @@
             </div>
             <div class="row">
                 {{-- Postdate --}}
-                <div class="col-md-auto col-sm-12 pe-0">
+                <div class="col-md-auto col-sm-12 ms-5">
                     {{-- @if($post['type'] == 'quests') --}}
                         @if ($post['term_start'] && $post['term_end'] && $post['term_start'] != $post['term_end'])
                             {{ date('M d, Y', strtotime($post['term_start'])) }} ~ {{ date('M d, Y', strtotime($post['term_end'])) }}

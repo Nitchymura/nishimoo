@@ -77,7 +77,7 @@
                             <h5 class="card-subtitle">Category: <strong>Beer</strong></h5>
                         @elseif($post['category_id']==6)
                             <h5 class="card-subtitle">Category: <strong>Others</strong></h5>
-                        @elseif($post['type']== "quests")
+                        @elseif($post['category_id']==7)
                             <h5 class="card-subtitle">Category: <strong>Travel</strong></h5>
                         @elseif($post['type']== "spots")
                             <h5 class="card-subtitle">Category: <strong>Spot</strong></h5>
@@ -87,13 +87,13 @@
                     </div>
 
                 <!-- Postdate -->
-                <div class="col-md-auto col-sm-12 pe-0 ms-auto">
+                {{-- <div class="col-md-auto col-sm-12 pe-0 ms-auto">
                     @if($post['updated_at'])
                         <h5 class="card-subtitle">{{ $post['updated_at']->format('H:i, M d Y')}}</h5>
                     @else
                         <h5 class="card-subtitle">{{ $post['created_at']->format('H:i, M d Y')}}</h5>
                     @endif
-                </div>
+                </div> --}}
             </div>                
 
             
@@ -117,6 +117,26 @@
                         <h4 class="card-title text-dark fw-bold pb-2">{{ $post['title'] }}</h4>
                     </a>
                     @endif
+                </div>
+            </div>
+
+            <div class="row">
+                {{-- Postdate --}}
+                <div class="col-md-auto col-sm-12">
+                    @if ($post['term_start'] && $post['term_end'] && $post['term_start'] != $post['term_end'])
+                        {{ date('M d, Y', strtotime($post['term_start'])) }} ~ {{ date('M d, Y', strtotime($post['term_end'])) }}
+                    @else
+                            {{ date('M d, Y', strtotime($post['term_start'])) }}
+                    @endif
+                    {{-- @if($post['type'] == 'quests') --}}
+                        {{-- @if ($post['term_start'] && $post['term_end'] && $post['term_start'] != $post['term_end'])
+                            {{ date('M d, Y', strtotime($post['term_start'])) }} ~ {{ date('M d, Y', strtotime($post['term_end'])) }}
+                        @else
+                            {{ date('M d, Y', strtotime($post['term_start'])) }}
+                        @endif --}}
+                    {{-- @else
+                        {{ $post['created_at']->format('M d, Y')}}
+                    @endif --}}
                 </div>
             </div>
 

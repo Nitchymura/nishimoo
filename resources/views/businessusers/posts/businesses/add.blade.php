@@ -48,8 +48,8 @@
                 <div class="row pb-3">
                     <div class="col-5">
                         <label for="term_start" class="form-label">Start date</label>
-                        <input type="date" name="term_start" id="term_starte" class="form-control"
-                            value="{{ old('term_start', $business->term_start ?? '') }}">
+                        <input type="date" name="term_start" id="term_start" class="form-control"
+                            value="{{ old('term_start') }}">
                         @error('term_start')
                             <p class="mb-0 text-danger small">{{ $message }}</p>
                         @enderror
@@ -62,7 +62,7 @@
                     <div class="col-5">
                         <label for="term_end" class="form-label">End date</label>
                         <input type="date" name="term_end" id="term_end" class="form-control"
-                            value="{{ old('term_end', $business->term_end ?? '') }}">
+                            value="{{ old('term_end') }}">
                         @error('term_end')
                             <p class="mb-0 text-danger small">{{ $message }}</p>
                         @enderror

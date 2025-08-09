@@ -34,7 +34,7 @@
 
     
 <div class="mt-4 mb-5 row justify-content-center">
-    <div class="col-11 mb-5 ">
+    <div class="col-lg-8 col-md-10 col-sm-11 mb-5 ">
         <div class="col-2 ms-auto dropdown">
             <form method="GET" action="{{ route('posts.all') }}">
                 <select name="sort" onchange="this.form.submit()" class="form-control">

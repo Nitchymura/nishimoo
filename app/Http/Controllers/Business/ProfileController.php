@@ -188,6 +188,8 @@ class ProfileController extends Controller
                 'tab_id' => 1,
                 'duration' => $item->duration,
                 'official_certification' => $item->official_certification,
+                'term_start' => $item->term_start,
+                'term_end' => $item->term_end,
                 'created_at' => $item->created_at,
                 'updated_at' => $item->updated_at,
                 'likes_count' => $item->likes_count, // ← 追加
@@ -217,6 +219,8 @@ class ProfileController extends Controller
             'tab_id' => 2,
             'duration' => $item->duration,
             'official_certification' => $item->official_certification,
+            'term_start' => $item->term_start,
+            'term_end' => $item->term_end,
             'created_at' => $item->created_at,
             'updated_at' => $item->updated_at,
             'likes_count' => $item->likes_count, // ← 追加
@@ -246,6 +250,8 @@ class ProfileController extends Controller
             'tab_id' => 6,
             'duration' => $item->duration,
             'official_certification' => $item->official_certification,
+            'term_start' => $item->term_start,
+            'term_end' => $item->term_end,
             'created_at' => $item->created_at,
             'updated_at' => $item->updated_at,
             'likes_count' => $item->likes_count, // ← 追加
@@ -256,8 +262,38 @@ class ProfileController extends Controller
             'type' => 'businesses', 
         ]);
 
-    $businesses = $locations->concat($events)->concat($others);
+    $travels = Business::where('category_id', 7)
+        ->where('user_id', $id)
+        ->withCount(['businessLikes as likes_count', 'businessComments as comments_count'])
+        ->withSum(['pageViews as views_sum' => function ($query) {
+            $query->where('page_type', 'App\\Models\\Business');
+        }], 'views')
+        ->withTrashed()
+        ->get()
+        ->map(fn($item) => [
+            'id' => $item->id,
+            'user' => $item->user,
+            'user_id' => $item->user_id,
+            'title' => $item->name,
+            'introduction' => $item->introduction,
+            'main_image' => $item->main_image,
+            'category_id' => 7,
+            'tab_id' => 7,
+            'duration' => $item->duration,
+            'official_certification' => $item->official_certification,
+            'term_start' => $item->term_start,
+            'term_end' => $item->term_end,
+            'created_at' => $item->created_at,
+            'updated_at' => $item->updated_at,
+            'likes_count' => $item->likes_count, // ← 追加
+            'comments_count' => $item->comments_count,
+            'views_sum' => $item->views_sum,
+            'is_liked' => $item->isLiked(),
+            'is_trashed' => method_exists($item, 'trashed') ? $item->trashed() : false,
+            'type' => 'businesses', 
+        ]);
 
+    $businesses = $locations->concat($events)->concat($others)->concat($travels);
     // ソート（必要に応じて拡張）
     $businesses = match($sort) {
         'latest' => $businesses->sortByDesc('created_at'),
@@ -541,6 +577,61 @@ protected function getPaginatedLikedPosts(Request $request, $id){
                 'is_trashed' => method_exists($item, 'trashed') ? $item->trashed() : false,
                 'type' => 'businesses', 
         ]);
+        $others = Business::where('category_id', 6)
+        ->whereIn('id', $likedBusinessIds)
+        ->withCount(['businessLikes as likes_count', 'businessComments as comments_count'])
+        ->withSum(['pageViews as views_sum' => function ($query) {
+            $query->where('page_type', 'App\\Models\\Business');
+        }], 'views')
+        ->get()
+        ->map(fn($item) => [
+            'id' => $item->id,
+                'user' => $item->user,
+                'user_id' => $item->user_id,
+                'title' => $item->name,
+                'introduction' => $item->introduction,
+                'main_image' => $item->main_image,
+                'category_id' => 6,
+                'tab_id' => 6,
+                'duration' => $item->duration,
+                'official_certification' => $item->official_certification,
+                'created_at' => $item->created_at,
+                'updated_at' => $item->updated_at,
+                'likes_count' => $item->likes_count, // ← 追加
+                'comments_count' => $item->comments_count,
+                'views_sum' => $item->views_sum,
+                'is_liked' => $item->isLiked(),
+                'is_trashed' => method_exists($item, 'trashed') ? $item->trashed() : false,
+                'type' => 'businesses', 
+        ]);
+        $travels = Business::where('category_id', 7)
+        ->whereIn('id', $likedBusinessIds)
+        ->withCount(['businessLikes as likes_count', 'businessComments as comments_count'])
+        ->withSum(['pageViews as views_sum' => function ($query) {
+            $query->where('page_type', 'App\\Models\\Business');
+        }], 'views')
+        ->get()
+        ->map(fn($item) => [
+            'id' => $item->id,
+                'user' => $item->user,
+                'user_id' => $item->user_id,
+                'title' => $item->name,
+                'introduction' => $item->introduction,
+                'main_image' => $item->main_image,
+                'category_id' => 6,
+                'tab_id' => 6,
+                'duration' => $item->duration,
+                'official_certification' => $item->official_certification,
+                'created_at' => $item->created_at,
+                'updated_at' => $item->updated_at,
+                'likes_count' => $item->likes_count, // ← 追加
+                'comments_count' => $item->comments_count,
+                'views_sum' => $item->views_sum,
+                'is_liked' => $item->isLiked(),
+                'is_trashed' => method_exists($item, 'trashed') ? $item->trashed() : false,
+                'type' => 'businesses', 
+        ]);
+
 
     $likedSpotIds = $user_a->spotLikes()->pluck('spot_id')->toArray();
     $spots = Spot::with('user')
