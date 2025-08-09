@@ -28,7 +28,11 @@
                     {{ $business->name }}
                
                     <h4 class="text-center">
-                        {{ $business->created_at->format('M d Y')}}
+                        @if ($business->term_start && $business->term_end && $business->term_start != $business->term_end)
+                        {{ date('M d, Y', strtotime($business->term_start)) }} ~ {{ date('M d, Y', strtotime($business->term_end)) }}
+                    @else
+                            {{ date('M d, Y', strtotime($business->term_start)) }}
+                    @endif
                     </h4>
                 </div>
 
