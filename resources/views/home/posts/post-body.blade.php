@@ -59,6 +59,8 @@
                                 <strong>Beer</strong>
                             @elseif($post['tab_id']==6)
                                 <strong>Others</strong>
+                            @elseif($post['tab_id']==7)
+                                <strong>Travels</strong>
                             @endif
                         </h5>
                     </div>
@@ -90,15 +92,15 @@
             <div class="row">
                 {{-- Postdate --}}
                 <div class="col-md-auto col-sm-12 pe-0">
-                    @if($post['type'] == 'quests')
-                        @if ($post['start_date'] && $post['end_date'] && $post['start_date'] != $post['end_date'])
-                            {{ date('M d, Y', strtotime($post['start_date'])) }} ~ {{ date('M d, Y', strtotime($post['end_date'])) }}
+                    {{-- @if($post['type'] == 'quests') --}}
+                        @if ($post['term_start'] && $post['term_end'] && $post['term_start'] != $post['term_end'])
+                            {{ date('M d, Y', strtotime($post['term_start'])) }} ~ {{ date('M d, Y', strtotime($post['term_end'])) }}
                         @else
-                            {{ date('M d, Y', strtotime($post['start_date'])) }}
+                            {{ date('M d, Y', strtotime($post['term_start'])) }}
                         @endif
-                    @else
+                    {{-- @else
                         {{ $post['created_at']->format('M d, Y')}}
-                    @endif
+                    @endif --}}
                 </div>
             </div>
             {{-- Icon & Name & Official mark --}}

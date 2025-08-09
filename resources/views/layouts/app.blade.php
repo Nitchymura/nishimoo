@@ -91,19 +91,15 @@
                             </li>
                             <li class="nav-item dropdown my-auto">
                                     @if (Auth::user()->role_id == 1 ||Auth::user()->role_id == 3)
-                                    <a id="navbarDropdown" class="nav-link btn " href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>+Add</a>
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">                                       
-                                        <a href="{{ route('quest.add') }}" class="dropdown-item text-dark">
+                                    <a href="{{ route('businesses.create') }}" class="nav-link">+ Add</a>
+                                        {{-- <a href="{{ route('quest.add') }}" class="dropdown-item text-dark">
                                             <i class="fa-solid fa-circle-plus icon-sm"></i> Travel
-                                        </a>
-                                        <a href="{{ route('businesses.create') }}" class="dropdown-item text-dark">
-                                            <i class="fa-solid fa-circle-plus icon-sm"></i> Favorite
-                                        </a>                                            
-                                        <a href="{{ route('spots.create') }}" class="dropdown-item text-dark">
+                                        </a> --}}
+                                                                                 
+                                        {{-- <a href="{{ route('spots.create') }}" class="dropdown-item text-dark">
                                             <i class="fa-solid fa-circle-plus icon-sm"></i> Others
-                                        </a>                                      
-                                    </div> 
+                                        </a>                                       --}}
+                                    {{-- </div>  --}}
                                     @endif
                             </li>
                             <li class="nav-item my-auto">

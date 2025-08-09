@@ -17,7 +17,7 @@
 
 
     <div class="col-auto ">
-        <a href="{{ route('posts.quests') }}" class="text-decoration-none text-dark" data-category="quest">
+        <a href="{{ route('posts.travels') }}" class="text-decoration-none text-dark" data-category="quest">
             <h1 class="poppins-semibold {{ request()->is('home/posts/quest*') ? 'active' : '' }}">
                 <img src="{{ asset('images/logo/plane.png')}}" alt="" class="header-icon-lg fa-rotate-by" > Travels
             </h1>

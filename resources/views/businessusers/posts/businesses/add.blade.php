@@ -26,6 +26,7 @@
                         </label>
                         <select class="form-control w-25" id="category_id" name="category_id">
                             <option value="" disabled {{ old('category_id') ? '' : 'selected' }}>----------</option>
+                            <option value="7" {{ old('category_id') == '6' ? 'selected' : '' }}>Travel</option>
                             <option value="1" {{ old('category_id') == '1' ? 'selected' : '' }}>Figure Skate</option>
                             <option value="2" {{ old('category_id') == '2' ? 'selected' : '' }}>Beer</option>
                             <option value="6" {{ old('category_id') == '6' ? 'selected' : '' }}>Others</option>
@@ -43,6 +44,31 @@
                     </div>
                 </div>
                 <script src="{{ asset('js/business.js') }}"></script>
+
+                <div class="row pb-3">
+                    <div class="col-5">
+                        <label for="term_start" class="form-label">Start date</label>
+                        <input type="date" name="term_start" id="term_starte" class="form-control"
+                            value="{{ old('term_start', $business->term_start ?? '') }}">
+                        @error('term_start')
+                            <p class="mb-0 text-danger small">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="col d-flex align-items-end justify-content-center">
+                        <i class="fa-solid fa-caret-right icon-md"></i>
+                    </div>
+
+                    <div class="col-5">
+                        <label for="term_end" class="form-label">End date</label>
+                        <input type="date" name="term_end" id="term_end" class="form-control"
+                            value="{{ old('term_end', $business->term_end ?? '') }}">
+                        @error('term_end')
+                            <p class="mb-0 text-danger small">{{ $message }}</p>
+                        @enderror
+                    </div>
+                        
+                </div>
 
                 <!-- Contact Information Form -->
                 {{-- @include('businessusers.posts.businesses.partials.contact-information') --}}

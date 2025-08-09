@@ -117,8 +117,15 @@ class HomeController extends Controller
                                 })
                                 ->latest()
                                 ->get();
+        $business_travels = Business::where('category_id', '7')
+                                ->where(function ($query) use ($request) {
+                                    $query->where('name', 'like', "%{$request->search}%")
+                                          ->orWhere('introduction', 'like', "%{$request->search}%");
+                                })
+                                ->latest()
+                                ->get();
 
-        $all = $quests->concat($spots)->concat($business_locations)->concat($business_events)->concat($business_others);
+        $all = $business_locations->concat($business_events)->concat($business_others)->concat($business_travels);
 
         $currentPage = LengthAwarePaginator::resolveCurrentPage('all_page');
         $perPage = 9;
@@ -181,6 +188,8 @@ class HomeController extends Controller
                     $category_id = 2;
                 } elseif ($category === 'others') {
                     $category_id = 6;
+                } elseif ($category === 'travel') {
+                    $category_id = 7;
                 }
                 $query = Business::select('businesses.*')
                     ->selectSub(function ($subquery) {
@@ -297,7 +306,22 @@ class HomeController extends Controller
             })
             ->get();
 
-        $all = $spots->concat($quests)->concat($locations)->concat($events)->concat($others);
+        $travels = Business::select('businesses.*')
+            ->selectSub(function ($subquery) {
+                $subquery->select('views')
+                    ->from('page_views')
+                    ->whereColumn('page_views.page_id', 'businesses.id')
+                    ->where('page_views.page_type', Business::class);
+            }, 'views_count')
+            ->withCount(['likes', 'comments'])
+            ->where('category_id', 7)
+            ->where(function ($q) use ($request) {
+                $q->where('name', 'like', "%{$request->search}%")
+                ->orWhere('introduction', 'like', "%{$request->search}%");
+            })
+            ->get();
+            
+        $all = $locations->concat($events)->concat($others)->concat($travels);
 
         if ($sort === 'likes') {
             $sorted = $all->sortByDesc('likes_count');
@@ -427,6 +451,8 @@ class HomeController extends Controller
             'category_id' => $item->category_id,
             'tab_id' => 3,
             'official_certification' => $item->official_certification,
+            'term_start' => $item->term_start,
+            'term_end' => $item->term_end,
             'created_at' => $item->created_at,
             'updated_at' => $item->updated_at,
             'likes_count' => $item->likes_count, // ← 追加
@@ -465,6 +491,8 @@ class HomeController extends Controller
             'category_id' => $item->category_id,
             'tab_id' => 4,
             'official_certification' => $item->official_certification,
+            'term_start' => $item->term_start,
+            'term_end' => $item->term_end,
             'created_at' => $item->created_at,
             'updated_at' => $item->updated_at,
             'likes_count' => $item->likes_count, // ← 追加
@@ -502,6 +530,8 @@ class HomeController extends Controller
             'category_id' => $item->category_id,
             'tab_id' => 6,
             'official_certification' => $item->official_certification,
+            'term_start' => $item->term_start,
+            'term_end' => $item->term_end,
             'created_at' => $item->created_at,
             'updated_at' => $item->updated_at,
             'likes_count' => $item->likes_count, // ← 追加
@@ -511,9 +541,46 @@ class HomeController extends Controller
             'type' => 'businesses', 
         ];
     });
-
+    $travels = Business::where('category_id', 7)
+        ->withCount(['businessLikes as likes_count'])
+        ->withCount(['businessComments as comments_count'])
+        ->withSum(['pageViews as views_sum' => function ($query) {
+            $query->where('page_type', 'App\\Models\\Business');
+        }], 'views')
+        ->with([
+            'photos' => function ($q) {
+                $q->orderBy('priority')->limit(1);
+            },
+            'user' // ← ユーザー情報も一緒に取得
+        ])
+        ->get()
+        ->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'user' => $item->user,
+                'user_id' => $item->user_id,
+                'user_name' => optional($item->user)->name,
+                'user_official_certification' => optional($item->user)->official_certification,
+                'avatar' => optional($item->user)->avatar,
+                'title' => $item->name,
+                'introduction' => $item->introduction,
+                'main_image' => $item->main_image,
+                'category_id' => $item->category_id,
+                'tab_id' => 7,
+                'official_certification' => $item->official_certification,
+                'term_start' => $item->term_start,
+                'term_end' => $item->term_end,
+                'created_at' => $item->created_at,
+                'updated_at' => $item->updated_at,
+                'likes_count' => $item->likes_count, // ← 追加
+                'comments_count' => $item->comments_count,
+                'views_sum' => $item->views_sum,
+                'is_liked' => $item->isLiked(),     // ← 追加
+                'type' => 'businesses', 
+            ];
+        });
     // 全部まとめる
-    $all = $quests->concat($locations)->concat($events)->concat($others);
+    $all = $locations->concat($events)->concat($others)->concat($travels);
 
         // 並び替え
         $all = match($sort) {
@@ -764,6 +831,8 @@ public function showQuests(Request $request){
                 'category_id' => $item->category_id,
                 'tab_id' => 3,
                 'official_certification' => $item->official_certification,
+                'term_start' => $item->term_start,
+                'term_end' => $item->term_end,
                 'created_at' => $item->created_at,
                 'updated_at' => $item->updated_at,
                 'likes_count' => $item->likes_count, // ← 追加
@@ -854,6 +923,8 @@ public function showQuests(Request $request){
                 'category_id' => $item->category_id,
                 'tab_id' => 4,
                 'official_certification' => $item->official_certification,
+                'term_start' => $item->term_start,
+                'term_end' => $item->term_end,
                 'created_at' => $item->created_at,
                 'updated_at' => $item->updated_at,
                 'likes_count' => $item->likes_count, // ← 追加
@@ -943,6 +1014,8 @@ public function showQuests(Request $request){
                 'category_id' => $item->category_id,
                 'tab_id' => 6,
                 'official_certification' => $item->official_certification,
+                'term_start' => $item->term_start,
+                'term_end' => $item->term_end,
                 'created_at' => $item->created_at,
                 'updated_at' => $item->updated_at,
                 'likes_count' => $item->likes_count, // ← 追加
@@ -996,6 +1069,97 @@ public function showQuests(Request $request){
     
         return view('home.posts.others', [
             'others' => $paginated,
+            'sort' => $sort, // Blade側で現在の並び順を表示するため
+        ]);
+    }
+
+    public function showTravels(Request $request){
+        $sort = $request->get('sort', 'likes_count');
+        $perPage = 6;
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        // Locations
+        $travels = Business::where('category_id', 7)
+        ->withCount(['businessLikes as likes_count'])
+        ->withCount(['businessComments as comments_count'])
+        ->withSum(['pageViews as views_sum' => function ($query) {
+            $query->where('page_type', 'App\\Models\\Business');
+        }], 'views')
+        ->with([
+            'photos' => function ($q) {
+                $q->orderBy('priority')->limit(1);
+            },
+            'user' // ← ユーザー情報も一緒に取得
+        ])
+        ->get()
+        ->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'user' => $item->user,
+                'user_id' => $item->user_id,
+                'user_name' => optional($item->user)->name,
+                'user_official_certification' => optional($item->user)->official_certification,
+                'avatar' => optional($item->user)->avatar,
+                'title' => $item->name,
+                'introduction' => $item->introduction,
+                'main_image' => $item->main_image,
+                'category_id' => $item->category_id,
+                'tab_id' => 6,
+                'official_certification' => $item->official_certification,
+                'term_start' => $item->term_start,
+                'term_end' => $item->term_end,
+                'created_at' => $item->created_at,
+                'updated_at' => $item->updated_at,
+                'likes_count' => $item->likes_count, // ← 追加
+                'comments_count' => $item->comments_count,
+                'views_sum' => $item->views_sum,
+                'is_liked' => $item->isLiked(),     // ← 追加
+                'type' => 'businesses', 
+            ];
+        });
+
+        $travels = match($sort) {
+            'oldest' => $travels->sortBy('created_at'),
+            'comments'  => $travels->sortByDesc('comments_count'),
+            'views'  => $travels->sortByDesc('views_sum'),
+            'likes' => $travels->sortByDesc('likes_count'),
+            default  => $travels->sortByDesc('created_at'), 
+        };
+    
+        $travels = $travels->values(); // キーをリセット（重要）
+
+        // ページネーション
+        $paginated = new LengthAwarePaginator(
+            $travels->forPage($currentPage, $perPage),
+            $travels->count(),
+            $perPage,
+            $currentPage,
+            [
+                'path' => $request->url(),
+                'query' => $request->query(), // ← クエリを保持！（sort=likes など）
+            ]
+        );
+    
+        switch ($sort) {
+            case 'oldest':
+                $travels = $travels->sortBy('created_at')->values();
+                break;
+            case 'latest':
+            default:                 
+                $travels = $travels->sortByDesc('created_at')->values();
+                break;                           
+            case 'comments':
+                $travels = $travels->sortByDesc('comments_count')->values();
+                break;
+            case 'views':
+                $travels = $travels->sortByDesc('views_sum')->values();
+                break;
+            case 'likes':               
+                $travels = $travels->sortByDesc('likes_count')->values();
+                break;  
+        }
+    
+        return view('home.posts.travels', [
+            'travels' => $paginated,
             'sort' => $sort, // Blade側で現在の並び順を表示するため
         ]);
     }
