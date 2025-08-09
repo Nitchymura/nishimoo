@@ -1,0 +1,102 @@
+.table-container{
+    width:100%;    
+}
+
+.custom-table tbody tr{
+    height:50px;
+    background-color: white;
+    color: gray;
+}
+
+.custom-table tbody tr{
+    border-collapse: collapse;
+    border-bottom: 1px solid gray;
+}
+
+.custom-table thead{
+    background-color: #3B3B6B ;
+    color: white;
+    height: 40px;
+}
+
+.table-from{
+    width:200px;
+}
+
+.table-spot{
+    width:200px;
+}
+
+.table-comment{
+    width:500px;
+}
+
+.table-rating{
+    width:200px;
+}
+
+.table-likes{
+    width:100px;
+}
+
+.table-time{
+    width:200px;
+}
+
+.table-from-a{
+    width:900px;
+}
+
+.table-rating-a{
+    width:200px;
+}
+
+.table-likes-a{
+    width:200px
+}
+
+.table-spot-a{
+    width:900px;
+}
+
+.table-time-a{
+    width:400px;
+}
+
+.table-comment-a{
+    width:1300px;
+}
+
+.table-comment{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+thead{
+    height:50px;
+}
+
+.cell-short{
+    width:300px;
+}
+
+.cell-middle{
+    width:1000px;
+    margin-right:20px;
+}
+
+.cell-long{
+    width:1300px;
+}
+
+.bg-navy-thead{
+    background-color: #3B3B6B;
+    color:white;
+    border: none;
+    font-weight: 600;
+}
+
+

@@ -1,0 +1,194 @@
+.xsmall{
+    color: #757890;
+}
+
+.border-quest-red{
+    border: 3px solid #D24848 !important;
+}
+.border-quest-navy {
+    border: 3px solid #3B3B6B !important;
+}
+.border-quest-green {
+    border: 3px solid #66BFBF !important;
+}
+.border-quest-Blue {
+    border: 3px solid #4496E3 !important;
+    }
+
+.color-blue{
+    color: #4496E3;
+}
+
+.spot-entry {
+    padding: 10px;
+}
+
+p{
+    width: 100%;  /* コンテナの幅いっぱいに広げる */
+    word-wrap: break-word;/* 長い単語を折り返す */
+    margin: 0 auto; /* 左右中央寄せ */
+    padding: 10px; /* 適度な余白 */
+}
+
+
+/* -----------------------Scroll Bar----------------------- */
+.spot-description-container {
+    max-height: 100%; /* 初期状態では高さ制限なし */
+    overflow-y: hidden; /* スクロールを非表示にする（JSで適用） */
+    padding-right: 10px; /* スクロールバーが表示された際のレイアウト調整 */
+}
+
+.spot-description {
+    overflow-y: auto;
+    overflow-x: hidden; /* ← 横スクロールは出さない */
+    padding: 0;
+    flex-grow: 1;
+    max-height: 100%;
+    min-height: 20rem;
+
+    word-wrap: break-word;     /* 長い単語も折り返す */
+    white-space: pre-wrap;     /* 改行と自動折り返しを両立 */
+}
+
+.spot-image-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#day-template .row.px-0 {
+    display: flex;
+    align-items: stretch; /* すべての子要素の高さを揃える */
+}
+
+
+.spot-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* スクロールバーのスタイル */
+.spot-description::-webkit-scrollbar {
+    width: 0.625rem;
+}
+
+.spot-description::-webkit-scrollbar-track {
+    background: #e1e2e3;
+    border-radius: 2rem;
+}
+
+.spot-description::-webkit-scrollbar-thumb {
+    background: #b2b2b3;
+    border-radius: 2rem;
+}
+
+.spot-description::-webkit-scrollbar-thumb:hover {
+    background: #aeaeae;
+}
+
+
+/* =======================search result */
+.search-results {
+    position: absolute;
+    width: calc(95% ); /* inputと同じ幅にする */
+    background: white;
+    /* border: 1px solid #ddd; */
+    max-height: 500px;
+    overflow-y: auto;
+    z-index: 1000; /* 他の要素より上に表示 */
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* =======================questBody Delete Modal========== */
+.x-btn {
+    top: -8px;
+    right: -8px;
+    cursor: pointer;
+    transform: scale(1.1);
+    width: 24px;
+    height: 24px;
+  }
+  .existing-image-wrapper {
+    position: relative;
+  }
+  
+  /* 右側フェード */
+  .existing-image-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+    pointer-events: none; /* クリック無効にしておく */
+    z-index: 2;
+  }
+  .existing-image-wrapper {
+  overflow-x: auto;
+  scrollbar-width: thin; /* Firefox用 */
+  scrollbar-color: #999 transparent;
+}
+
+/* Chrome用 */
+.existing-image-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.existing-image-wrapper::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 4px;
+}
+
+.img-thumbnail{
+    width: 120px;
+    height: auto;
+}
+
+/* ぼわん表示 */
+.reveal-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-section.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.icon-mmd{
+    font-size: .8125rem;
+}
+
+.official-badge{
+    position: absolute;
+    top: -3rem; 
+    left: -3rem; 
+    z-index: 10;
+}
+
+.official-badge-xl{
+    position: absolute;
+    top: -2rem; 
+    left: -2rem; 
+    z-index: 10;
+}
+  
+.modal {
+    z-index: 1055 !important; /* Bootstrapの標準より上 */
+  }
+  
+  .modal-backdrop {
+    z-index: 1050 !important;
+  }
+  
+  body.modal-open {
+    overflow: hidden; /* 背景スクロール防止 */
+  }
+  

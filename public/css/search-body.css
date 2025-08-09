@@ -1,0 +1,129 @@
+.card{
+    position: relative;
+    padding-left: 5%; 
+    padding-top: 5%;
+    width: 100%;
+    height: 33rem;
+    margin-bottom: 30px;
+
+}
+
+.slick-slide {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+    
+.slick-track {
+    display: flex !important;
+}
+
+.slick-slide > div {
+    height: 15.5rem;
+}
+
+
+
+.body-image{
+    width:100%;
+    height:260px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.official{
+    position: absolute;
+    left: -1.4%;
+    top: -1.4%;
+    width: 20%;
+    height: auto;
+}
+
+.official-personal{
+    width: 1.3rem;
+    height: 1.3rem;
+    /* width: 20px;
+    height: 20px; */
+}
+
+.card-body{
+    display: flow-root
+}
+
+.card-subtitle{
+    font-family: "Raleway", sans-serif;
+    font-size: 12px;
+
+}
+
+.card-title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* .username {
+    size: 23rem !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px; 
+    margin: 0;
+} */
+
+.personal_space{
+    height: 3.2rem;
+
+}
+
+.card-icon{
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    /* width: 30px;
+    height: 30px; */
+}
+
+.card_description{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-follow-body{
+    background-color: #4496E3 !important;
+    color: white !important;
+    border: solid 2px #4496E3 !important;
+    border-radius: 20px !important;
+    text-decoration: none !important;
+}
+
+button.btn.btn-sm.shadow-none{
+    margin-top: 0.5rem;
+}
+
+.no-click{
+    pointer-events: none; 
+}
+
+.col-auto.d-flex.ms-3 img{
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.chart-img{
+    margin-bottom: 5px;
+}
+
+.like-button{
+    padding-bottom: 1rem;
+}
+
+.comment{
+    margin-top: 0.2rem;
+}
+
+

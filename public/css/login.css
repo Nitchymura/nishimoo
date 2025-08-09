@@ -1,0 +1,37 @@
+body {
+    background: url("/images/town.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+.container-login {
+    max-width: 400px;
+}
+
+.reset-card {
+    max-width: 400px;
+
+    margin-left: 120px;
+}
+
+.logo {
+    width: 50px;
+}
+
+.reset-bg {
+    background: url("/images/background.jpg") no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.card-reset,
+.card-login,
+.card-register {
+    background-color: rgba(255, 251, 240, 0.6);
+    border-radius: 10px;
+}
+
+.logo-small {
+    width: 75px;
+    height: auto;
+    vertical-align: middle;
+}

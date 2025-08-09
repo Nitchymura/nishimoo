@@ -1,0 +1,714 @@
+body{
+    /* Raleway regular  */
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size:  1rem;
+}
+
+/* ---------------FONT - POPPINS-------------- */
+
+.poppins-regular{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+  }
+
+.poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+  }
+
+.poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+  }
+
+/* ---------------FONT - Raleway--------------- */
+
+.raleway-regular {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+  }
+
+.raleway-semibold {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+  }
+
+.raleway-bold {
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+  }
+
+/* ---------------ERROR MESSAGE--------------- */
+.xsmall{
+    font-size: 0.75rem;
+}
+
+/* ---------------Header--------------- */
+h1{
+    font-family: "Poppins", sans-serif;
+    font-size: 4rem;
+}
+
+h2{
+    font-family: "Poppins", sans-serif;
+    font-size: 3rem;
+}
+
+h3{
+    font-family: "Poppins", sans-serif;
+    font-size: 2rem;
+}
+
+h4{
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+}
+
+h5{
+    font-family: "Poppins", sans-serif;
+    font-size: 1.125rem;
+}
+
+h6{
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+}
+
+/* ---------------FORM--------------- */
+.form-label{
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0;
+    margin: 0 0.5px;
+}
+
+.input-box{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #73B0E8;
+    border-radius: 0.375rem;
+    height: calc(2.25rem + 2px);
+}
+
+.input-box::placeholder{
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    color: #757890;
+    font-size: 0.8rem;
+    opacity: 70%;
+}
+
+.text-area{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #73B0E8;
+    border-radius: 0.375rem;
+    height: auto;
+}
+
+.text-area::placeholder{
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    color: #757890;
+    font-size: 0.8rem;
+    opacity: 70%;
+}
+
+/* --------------- COLOR--------------- */
+.color-red{
+    color: #D24848;    
+}
+
+.color-Blue{
+    color:  #4496E3;
+}
+
+.color-green{
+    color: #66BFBF;
+}
+
+.color-navy{
+    color:  #3B3B6B;
+}
+
+.color-yellow{
+    color:  #FFBE0C;
+}
+
+/* ---------------BACKGROUND--------------- */
+.bg-blue{
+    background-color: #B4D5F4;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.bg-green{
+    background-color: #C2E5E5;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.bg-navy{
+    background-color: #3B3B6B;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.bg-yellow{
+    background-color: #F8F0DB;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+/* ---------------border--------------- */
+.border-red{
+    border: 1px solid #D24848;
+}
+
+.border-green{
+    border: 1px solid #C2E5E5;
+}
+
+.border-navy{
+    border: 1px solid #3B3B6B;
+}
+/* ---------------AVATAR--------------- */
+
+/* for admin list*/
+.avatar-xxs{
+    height: 1.5rem;
+    width: 1.5rem;
+    object-fit: cover;
+}
+
+/* for body*/
+.avatar-xs{
+    height: 1.875rem;
+    width: 1.875rem;
+    object-fit: cover;
+}
+
+/* for Username xsmall  */
+.avatar-sm{
+    height: 2.8125rem;
+    width: 2.8125rem;
+    object-fit: cover;
+}
+
+/* for Username  */
+.avatar-md{
+    height: 3.75rem;
+    width: 3.75rem;
+    object-fit: cover;
+}
+
+/* for Tourist Profile  */
+.avatar-lg{
+    height: 8.25rem;
+    width: 8.25rem;
+    object-fit: cover;
+}
+
+/* for Business Profile */
+.avatar-xl{
+    height: 6rem;
+    width: 6rem;
+    object-fit: cover;
+}
+.avatar-xxl{
+    height: 10rem;
+    width: 10rem;
+    object-fit: cover;
+}
+
+/* ---------------PROFILE ICON--------------- */
+
+/* for body*/
+.profile-xs{
+    font-size: 1.875rem;
+}
+
+/* for Username xsmall  */
+.profile-sm{
+    font-size: 2.8125rem;
+}
+
+/* for Username  */
+.profile-md{
+    font-size: 3.75rem;
+}
+
+/* for Tourist Profile  */
+.profile-lg{
+    font-size: 8.25rem;
+}
+
+/* for Business Profile */
+.profile-xl{
+    font-size: 6rem;
+}
+.profile-xxl{
+    font-size: 10rem;
+}
+
+
+/* ---------------ICON--------------- */
+
+/* FOR COMMENT, VIEW etc  */
+.icon-sm{
+    font-size: 1.25rem;
+}
+
+/* FOR HEART, STAR ,*/
+.fa-heart{
+    font-size: 1.25rem;
+}
+
+.fa-heart:hover{
+    color: #D24848;
+    transform: scale(1.2, 1.2); 
+}
+
+/* FOR SNS ICON */
+.icon-md{
+    font-size: 2.1875rem;
+}
+
+.icon-lg{
+    font-size: 4.5rem;
+}
+
+.icon-xl{
+    font-size: 6rem;
+}
+
+.icon-xxl{
+    font-size: 8rem;
+}
+
+/* ---------------IMAGE--------------- */
+.img-sm{
+    height:6rem;
+    width:9rem;
+    object-fit:cover;
+}
+
+.img-lg{
+    height:8rem;
+    width:12rem;
+    object-fit:cover;
+}
+
+.img-xl{
+    height:24rem;
+    width:36rem;
+    object-fit:cover;
+}
+
+/* ---------------BUTTON--------------- */
+
+/* FOLLOW */
+.btn-follow{
+    background-color: #4496E3;
+    color: white;
+    border: solid 2px #4496E3;
+    border-radius: 20px;
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+
+.btn-follow:hover{
+    background-color: #4496E3;
+    color: white;
+    border: solid 2px #326a9f;
+}
+
+/* FOLLOWING, UNFOLLOW */
+.btn-following{
+    background-color: white;
+    color: #4496E3;
+    border: solid 2px #4496E3;
+    border-radius: 20px;
+    text-transform: capitalize;
+    font-size: 1rem;
+}
+
+
+.btn-following:hover{
+    background-color: white;
+    color: #4496E3;
+    border: solid 2px white;
+}
+
+/* red  */
+.btn-red{
+    background-color: #D24848;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border: solid 2px #D24848;
+    transition: all .5s;
+    text-transform: uppercase;
+}
+
+.btn-red:hover{
+    background-color: #FFDFDF;
+    border: solid 2px #FFDFDF;
+    color: #D24848
+}
+
+/* outline red  */
+.btn-outline-red{
+    background-color: white;
+    color: #D24848;
+    font-weight: bold;
+    font-size: 1rem;
+    border: solid 2px #D24848;
+    text-transform: uppercase;
+    transition: all .5s;
+}
+
+.btn-outline-red:hover{
+    background-color: #FFDFDF;
+    border: solid 2px #FFDFDF;
+    color: #D24848;
+}
+
+.delete-avatar{
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    /* position: absolute;
+    bottom: 10px;
+    left: 30px; */
+}
+
+/* navy */
+.btn-navy{
+    background-color: #3B3B6B;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border: solid 2px #3B3B6B;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .5s;
+}
+
+.btn-navy:hover{
+    background-color: #CBD9FF;
+    border: solid 2px #CBD9FF;
+    color: #161672;
+}
+
+/* outline navy */
+.btn-outline-navy{
+    background-color: white;
+    color: #3B3B6B;
+    font-weight: bold;
+    font-size: 1rem;
+    border: solid 2px #3B3B6B;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .5s;
+}
+
+.btn-outline-navy:hover{
+    background-color: #CBD9FF;
+    border: solid 2px #CBD9FF;
+    color: #3B3B6B;
+}
+
+/* green  */
+.btn-green{
+    background-color: #66BFBF;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border: solid 2px #66BFBF;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .5s;
+}
+
+.btn-green:hover{
+    background-color: #BFE8E8;
+    border: solid 2px #BFE8E8;
+    color: #007F7F;
+}
+
+/* outline green  */
+.btn-outline-green{
+    background-color: white;
+    color: #66BFBF;
+    font-weight: bold;
+    font-size: 1rem;
+    border: solid 2px #66BFBF;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .5s;
+}
+
+.btn-outline-green:hover{
+    background-color: #BFE8E8;
+    color: #007F7F;
+    border: solid 2px #BFE8E8;
+    border-radius: 5px;
+}
+
+/* blue */
+.btn-blue{
+    background-color: #CBD9FF;
+    color: #3B3B6B;
+    font-weight: bold;
+    font-size: 1rem;
+    border: solid 2px #CBD9FF;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all .5s;
+}
+
+.btn-blue:hover{
+    background-color: #3B3B6B;
+    color: white;
+    border: solid 2px #3B3B6B;
+    border-radius: 5px;
+}
+
+/* ---------------PROFILE--------------- */
+.header-image{
+    /* position: relative; */
+    height:300px;
+    width: 100%;
+    object-fit:cover;
+}
+
+/* .profile-image{
+    position: absolute;
+    left: 0%;
+    top: -25%;
+    width: 20%;
+    height: auto;
+} */
+
+.tag-category .col-auto h3.active{
+    color: #D24848 !important; 
+    font-weight: bold; 
+}
+
+/* Bootstrapのタブ風スタイルを全解除 */
+.custom-tabs-black .nav-link {
+    border: none !important;
+    background: none !important;
+    color: #555;
+    font-weight: normal;
+    font-size: 2rem;
+}
+
+.custom-tabs .nav-link {
+    border: none !important;
+    background: none !important;
+    color: white;
+    font-weight: normal;
+    font-size: 2rem;
+}
+
+/* アンダーライン削除 */
+.custom-tabs .nav-link:hover {
+    text-decoration: none;
+}
+
+/* activeタブだけ文字色変更（例：青） */
+.custom-tabs-black .nav-link.active-tab {
+    color: #D24848 ; /* Bootstrapのprimary色 */
+    font-weight: bold;
+}
+
+.custom-tabs .nav-link.active-tab {
+    color: #D24848 ; /* Bootstrapのprimary色 */
+    font-weight: bold;
+}
+
+.custom-tabs-black {
+    border-bottom: 1px solid #555; 
+}
+
+.custom-tabs {
+    border-bottom: 1px solid white; 
+}
+
+/* REVIEW PAGE */
+.table-container{
+    width:100%;    
+}
+
+.custom-table tbody tr{
+    height:50px;
+    background-color: white;
+    color: gray;
+}
+
+.custom-table tbody tr{
+    border-collapse: collapse;
+    border-bottom: 1px solid gray;
+}
+
+.custom-table thead{
+    background-color: #3B3B6B ;
+    color: white;
+    height: 40px;
+}
+
+.table-from{
+    width:200px;
+}
+
+.table-spot{
+    width:200px;
+}
+
+.table-comment{
+    width:500px;
+}
+
+.table-rating{
+    width:200px;
+}
+
+.table-likes{
+    width:100px;
+}
+
+.table-time{
+    width:200px;
+}
+
+.table-from-a{
+    width:900px;
+}
+
+.table-rating-a{
+    width:200px;
+}
+
+.table-likes-a{
+    width:200px
+}
+
+.table-spot-a{
+    width:900px;
+}
+
+.table-time-a{
+    width:400px;
+}
+
+.table-comment-a{
+    width:1300px;
+}
+
+.table-comment{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+thead{
+    height:50px;
+}
+
+.cell-short{
+    width:300px;
+}
+
+.cell-middle{
+    width:1000px;
+    margin-right:20px;
+}
+
+.cell-long{
+    width:1300px;
+}
+
+
+/* .dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 100;
+} */
+
+.bg-navy-thead{
+    background-color: #3B3B6B;
+    color:white;
+    border: none;
+    font-weight: 600;
+}
+
+.profile-image{
+    position:relative;
+}
+
+.delete-avatar-profile{
+    position: absolute;
+    right: 0px;
+    bottom:20px;
+    z-index: 10px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1;
+}
+
+.prof-image{
+    width: 200px;
+}
+    .intro{
+        font-size: 1.2rem;
+    }
+
+@media screen and (max-width: 600px) {
+    .prof-image{
+        width: 100px;
+    }
+    .intro{
+        font-size: 1rem;
+    }
+}

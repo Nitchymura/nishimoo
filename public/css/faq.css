@@ -1,0 +1,76 @@
+body{
+    background-color: #FFFBF0;
+}
+
+.answer{
+    display: none;
+}
+
+.faq-item.active .answer{
+    display: block;
+    background-color: rgb(238, 238, 238);
+}
+
+
+
+.wrapper{
+    min-height: calc(100vh - 150px);
+    padding-bottom: 7rem;
+    padding-top: 5rem;
+}
+
+.faq-item{
+    display: flex;
+    flex-direction: column;   /* ← これを追加 */
+    align-items: center;      /* 横方向中央揃え */
+    margin-top: 2rem;
+}
+
+button{
+    width: 50rem;
+    height: 3rem;
+    border: none;
+    text-align: left;
+    padding-left: 1rem;
+    padding-top: 0.8rem;
+}
+
+.answer{
+    padding-top: 1rem;
+    padding-left: 1.5rem;
+    padding-bottom: 1rem;
+    width: 50rem;
+    margin-bottom: 10px;
+}
+
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+
+.line-faq{
+    border-bottom: 2px solid gray;
+    margin: auto;
+    margin-bottom: 5rem;
+    width: 50rem;
+    align-items: center;
+}
+
+.title{
+    font-weight: 5rem;
+}
+
+

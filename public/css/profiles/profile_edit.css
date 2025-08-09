@@ -1,0 +1,237 @@
+/* General Settings */
+body {
+    background-color: #3B3B6B;
+    /* Navy background */
+}
+
+.header-preview {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.avatar-preview {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    background-color: #f5f5f5;
+}
+
+.avatar-upload-label {
+    cursor: pointer;
+    font-size: 1.3rem;
+    background-color: #fff;
+}
+
+.btn-success {
+    background-color: #66BFBF;
+    border-color: #66BFBF;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #5aa8a8;
+    border-color: #5aa8a8;
+}
+
+/* Profile Edit Main Container */
+.profile-edit-container {
+    background-color: white;
+    color: #000000;
+    padding: 30px;
+    border-radius: 12px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Container alignment */
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Header Image Preview */
+.header-preview {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+
+}
+
+/* Avatar Preview Image */
+.avatar-preview {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
+    margin-top: -60px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+/* Social Icons */
+.social-icons i {
+    font-size: 3.5rem;
+    color: #ffffff;
+    margin-right: 20px;
+}
+
+/* Form Styling */
+.profile-form label {
+    font-weight: bold;
+}
+
+.profile-form input,
+.profile-form textarea {
+    border-radius: 6px;
+}
+
+.profile-form .btn {
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Input Group Icon alignment */
+.input-group-text {
+    width: 42px;
+    justify-content: center;
+}
+
+/* Note Text */
+.form-text {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+/* Section Padding for Change Password */
+.change-password-section {
+    background-color: white;
+    padding: 25px 30px;
+    border-radius: 12px;
+    margin-top: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.btn-success {
+    background-color: #66BFBF;
+    border-color: #66BFBF;
+    color: #ffffff;
+}
+
+.btn-success:hover {
+    background-color: #5aa8a8;
+    border-color: #5aa8a8;
+    color: #ffffff;
+}
+
+.avatar-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.avatar-container label {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    cursor: pointer;
+}
+
+.avatar-container input[type="file"] {
+    display: none;
+}
+
+/* .avatar-container .user {
+    font-size: 9rem;
+    color: transparent;
+    background-color: #000000;
+    -webkit-background-clip: text;
+}
+.avatar-container .camera {
+    position:absolute;
+    bottom: 0;
+    right: 15px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    font-size: 1.5rem;
+    background: yellow;
+} */
+.profile-container {
+    position: relative;
+    width: 770px;
+    height: 300px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: #000000;
+}
+
+.header {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+.header input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar {
+    position: absolute;
+    bottom: -50px;
+    left: 20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.avatar input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.profile-edit-spacing {
+    margin-top: 100px;
+}
+
+.header {
+    cursor: pointer;
+}

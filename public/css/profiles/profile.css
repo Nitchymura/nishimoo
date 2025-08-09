@@ -1,0 +1,180 @@
+/* General Settings */
+body {
+    background-color: #3B3B6B;
+}
+
+/* Header Background */
+.header-container {
+    width: 100%;
+    height: 300px;
+    background-image: url("../../images/mount-fuji.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Profile Container */
+.profile-container {
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: -80px;
+    position: relative;
+}
+
+/* Avatar Container */
+.avatar-container {
+    position: relative;
+    top: -50px;
+}
+
+/* Avatar Image */
+.avatar-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+/* Username */
+.username {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Social Icons */
+.social-icons i {
+    font-size: 3.5rem;
+    color: #ffffff;
+    margin-right: 20px;
+}
+
+/* Sidebar Wrapper */
+.sidebar {
+    background-color: white;
+    padding: 25px 15px 15px 15px;
+    border-radius: 10px;
+    position: fixed;
+    left: 0;
+    top: 60px;
+    width: 300px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Sidebar Items */
+.sidebar ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    padding: 12px 0;
+}
+
+/* General Link Styling */
+.sidebar ul li a {
+    font-size: 1.4rem;
+    color: #3B3B6B;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Highlight the current (active) item */
+li.active-item a::before {
+    content: '■ ';
+    color: #3B3B6B;
+    font-size: 0.9rem;
+    margin-right: 4px;
+}
+.nav-link {
+    padding-left: 1.2rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+
+li.active-item a::before {
+    content: '■';
+    margin-left: -1.2rem;
+    margin-right: 0.5rem;
+    color: #3B3B6B;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #3B3B6B;
+    transform: translateX(2px);
+    transition: all 0.3s ease;
+}
+
+/* Title-like item for Liked */
+.sidebar .nav-title {
+    font-size: 1.4rem;
+    color: #3B3B6B;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    pointer-events: none;
+}
+
+/* Indented sub-links under Liked */
+.sidebar ul.sub-links {
+    padding-left: 10px;
+}
+
+.sidebar ul.sub-links li a {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #3B3B6B;
+}
+
+/* Posts Section */
+.posts-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+/* User Stats */
+.user-stats {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.followers-section {
+    background-color: #ffffff;
+    border-radius: 12px;
+}
+
+.comments-section .list-group-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.card-fixed {
+    width: 18rem;
+}
+
+
+.centered-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.small-avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.profile-comment{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

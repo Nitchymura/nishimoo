@@ -1,0 +1,20 @@
+.bg-skyblue-thead{
+    background-color: #cfe2ff;
+    color:black;
+    border: none;
+    font-weight: 600;
+}
+
+/* .table thead th{
+    background-color: #3B3B6B ;
+    color: white;
+    line-height: 1.2;
+} */
+
+.table-comment{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+}
