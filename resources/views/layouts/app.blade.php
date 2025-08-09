@@ -19,7 +19,7 @@
     <!-- Scripts -->
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
     <link rel="stylesheet" href="{{ asset('css/app-C7NydqTG.css') }}">
-    <link rel="stylesheet" href="{{ asset('js/app-BZpg9W-k.js') }}">
+    <script src="{{ asset('js/app-BZpq9W-k.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/navbar-style.css') }}">
     @yield('css')
@@ -110,7 +110,6 @@
                                         @endif
                                     </div>
                             </li>
-                            <li class="nav-item my-auto">
                             <li class="nav-item my-auto">
                                 <a href="{{ route('faq') }}" class="nav-link" href="">FAQ</a>
                             </li>
