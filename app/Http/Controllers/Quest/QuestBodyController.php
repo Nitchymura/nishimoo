@@ -92,7 +92,7 @@ class QuestBodyController extends Controller
         $dayList = [];
         $dayNumber = 1;
 
-        if ($roleId == 1 && $quest->start_date && $quest->end_date) {
+        if ($roleId ==3 && $quest->start_date && $quest->end_date) {
             $start = \Carbon\Carbon::parse($quest->start_date);
             $end = \Carbon\Carbon::parse($quest->end_date);
             $current = $start->copy();
@@ -124,6 +124,91 @@ class QuestBodyController extends Controller
             'quest_id' => $quest_id,
         ]);
     }
+
+// public function updateQuestBody(Request $request, $id){
+//     try {
+//         $validated = $request->validate([
+//             'day_number' => 'required|integer',
+//             'introduction' => 'required|string',
+//             'business_title' => 'nullable|max:30',
+//             'is_agenda' => 'nullable|in:0,1',
+//             'images.*' => 'nullable|image|max:2048|mimes:jpg,jpeg,png,gif',
+//             'existing_images' => 'nullable|array',
+//             // 'spot_business_type' => 'required|in:spot,business', // 追加
+//             // 'spot_business_id' => 'required|integer', // 追加
+//         ]);
+//     } catch (\Illuminate\Validation\ValidationException $e) {
+//         return response()->json([
+//             'status' => 'error',
+//             'message' => 'Validation failed',
+//             'errors' => $e->errors(),
+//         ], 422);
+//     }
+
+//     try {
+//         $questbody = QuestBody::findOrFail($id);
+//     } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+//         return response()->json([
+//             'status' => 'error',
+//             'message' => 'Quest body not found!',
+//         ], 404);
+//     }
+
+//     $questbody->day_number = $request->day_number;
+//     $questbody->introduction = $request->introduction;
+//     $questbody->business_title = $request->business_title;
+//     $questbody->is_agenda = $request->is_agenda ?? 1;  // 整数として1をデフォルト値にする
+
+//     // Spot or Business の紐付け
+//     if ($request->spot_business_type === 'spot') {
+//         $questbody->spot_id = (int) $request->spot_business_id;
+//         $questbody->business_id = null;
+//     } elseif ($request->spot_business_type === 'business') {
+//         $questbody->business_id = (int) $request->spot_business_id;
+//         $questbody->spot_id = null;
+//     }
+
+//     // 画像処理
+//     $existingImages = $request->input('existing_images', []);
+//     $newImageList = [];
+
+//     if ($request->hasFile('images')) {
+//         foreach ($request->file('images') as $image) {
+//             if ($image && $image->isValid()) {
+//                 // ファイルの中身を取得
+//                 $fileContent = file_get_contents($image->getRealPath());
+
+//                 // MIMEタイプを取得
+//                 $mimeType = $image->getMimeType();
+
+//                 // base64エンコードしてデータURL形式にする
+//                 $base64Image = 'data:' . $mimeType . ';base64,' . base64_encode($fileContent);
+
+//                 // 配列に格納
+//                 $newImageList[] = $base64Image;
+//             }
+//         }
+//     }
+
+//     $mergedImages = array_unique(array_merge($existingImages, $newImageList));
+
+//     if (count($mergedImages) === 0) {
+//         return response()->json([
+//             'status' => 'error',
+//             'message' => '画像が1枚以上必要です。',
+//         ], 400);
+//     }
+
+//     $questbody->image = json_encode($mergedImages);
+//     $questbody->save();
+
+//     return response()->json([
+//         'status' => 'success',
+//         'message' => 'Quest body updated!',
+//         'quest_id' => $questbody->quest_id,
+//     ]);
+// }
+
 
     public function updateQuestBody(Request $request, $id){
         try {

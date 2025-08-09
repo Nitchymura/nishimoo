@@ -513,7 +513,7 @@ class HomeController extends Controller
     });
 
     // 全部まとめる
-    $all = $quests->concat($spots)->concat($locations)->concat($events)->concat($others);
+    $all = $quests->concat($locations)->concat($events)->concat($others);
 
         // 並び替え
         $all = match($sort) {

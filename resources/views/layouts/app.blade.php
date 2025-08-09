@@ -90,7 +90,7 @@
                                 <a href="{{ route('posts.all') }}" class="nav-link" href="">HOME</a>
                             </li>
                             <li class="nav-item dropdown my-auto">
-                                    @if (Auth::user()->role_id == 3)
+                                    @if (Auth::user()->role_id == 1 ||Auth::user()->role_id == 3)
                                     <a id="navbarDropdown" class="nav-link btn " href="#" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>+Add</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">                                       

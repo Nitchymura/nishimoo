@@ -50,7 +50,7 @@ class QuestController extends Controller{
         ];
     
         // ロールに応じた追加バリデーション
-        if ($user->role_id == 1) {
+        if ($user->role_id == 3) {
             $rules['start_date'] = 'required|date';
             $rules['end_date'] = 'required|date|after_or_equal:start_date';
         } elseif ($user->role_id == 2) {
@@ -126,7 +126,7 @@ class QuestController extends Controller{
         $dayList = [];
         $dayNumber = 1;
 
-        if ($user->role_id == 1 && $quest->start_date && $quest->end_date) {
+        if ($user->role_id != 2 && $quest->start_date && $quest->end_date) {
             $start = \Carbon\Carbon::parse($quest->start_date);
             $end = \Carbon\Carbon::parse($quest->end_date);
             $current = $start->copy();
@@ -193,7 +193,7 @@ class QuestController extends Controller{
 
         $roleId = Auth::user()->role_id;
 
-        if ($roleId == 1) {
+        if ($roleId == 3) {
             // ✅ 一般ユーザー
             $quest->start_date = $request->start_date;
             $quest->end_date = $request->end_date;
@@ -221,7 +221,7 @@ class QuestController extends Controller{
         $dayList = [];
         $dayNumber = 1;
 
-        if ($roleId == 1 && $quest->start_date && $quest->end_date) {
+        if ($roleId != 2 && $quest->start_date && $quest->end_date) {
             $start = \Carbon\Carbon::parse($quest->start_date);
             $end = \Carbon\Carbon::parse($quest->end_date);
             $current = $start->copy();

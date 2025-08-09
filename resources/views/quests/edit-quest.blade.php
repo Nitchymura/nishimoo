@@ -51,12 +51,13 @@
             
                     @php
                         $hasQuestBodies = isset($questBodies) && $questBodies->isNotEmpty();
-                        $isRole2 = Auth::check() && Auth::user()->role_id == 3;
+                        $isRole3 = Auth::check() && Auth::user()->role_id == 3;
+                        $isRole2 = Auth::check() && Auth::user()->role_id == 2;
                         $isRole1 = Auth::check() && Auth::user()->role_id == 1;
                     @endphp
 
                     {{-- ラベル行 --}}
-                    <div class="row align-items-end">
+                    {{-- <div class="row align-items-end">
                         <div class="col-md-5">
                             <label for="spot_name" class="form-label">
                                 {{ $isRole1 ? 'Search Spot on HopQuest' : 'Select Your Business' }}
@@ -69,12 +70,12 @@
                                 <p class="m-0 p-0 xsmall">No spot on HopQuest? Tell us your fav spot!</p>
                             </div>
                         @endif
-                    </div>
+                    </div> --}}
 
                     {{-- 入力欄：role 2 の場合、縦並び --}}
-                    @if ($isRole2)
+                    {{-- @if ($isRole3)
                         <div class="row">
-                            {{-- Business name --}}
+                            <!-- Business name -->
                             <div class="col-lg-5 position-relative mt-2">
                                 @php
                                     $firstBody = isset($questBodies) && $questBodies->isNotEmpty() ? $questBodies->first() : null;
@@ -114,7 +115,7 @@
                         
 
                         <div class="row">
-                            {{-- Place name --}}
+                            <!-- Place name -->
                             <div class="col-lg-5 position-relative mt-3">
                                 <label for="business_title" class="form-label">Place name</label>
                                 <input 
@@ -133,10 +134,10 @@
 
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
 
                     {{-- 入力欄：role 1 の場合（従来通り） --}}
-                    @if ($isRole1)
+                    @if ($isRole3)
                         <div class="row">
                             <div class="col-lg-5 position-relative mt-2">
                                 <input 
@@ -176,7 +177,7 @@
 
                     <div class="row mx-0 px-0 text-center">
                         <div class="text-start pb-3 px-0">
-                            <label for="image" class="form-label p-2">Photos</label>
+                            <label for="image" class="form-label mt-3">Photos</label>
                             <div class="col-12 px-0">
                                 <input type="file" id="image" class="custom-file-input form-control input-box w-100" multiple>
                                 <p id="image-error" class="text-danger small d-none">Please upload at leaset one image.</p>
@@ -220,7 +221,7 @@
         
                     <div class="row pb-3 mx-0 justify-content-end">
                         <button type="button" id="addbodybtn" class="btn btn-navy w-50">
-                            <i class="fa-solid fa-plus icon-xs d-inline"></i>Add on your quest
+                            <i class="fa-solid fa-plus icon-xs d-inline"></i> Add on your travel
                         </button>
                     </div>
                 </form>
@@ -318,7 +319,7 @@
                                 <div class="spot-entry">
                                     <div class="row pb-3 justify-content-between align-items-center">
                                         <h4 class="spot-name poppins-bold col-md-10 text-start">
-                                            @if ($quest->user->role_id == 2 && $questbody->business_title)
+                                            @if ($quest->user->role_id == 3 && $questbody->business_title)
                                                 {{ $questbody->business_title }} {{-- カスタム入力なのでリンクなし --}}
                                             @else
                                                 @if ($questbody->spot)

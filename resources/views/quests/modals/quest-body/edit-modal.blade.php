@@ -147,5 +147,4 @@
         </div>
     </div>
 </div>
-@vite(['resources/js/quest/quest-body/edit-questbody-modal.js'])
-
+{{-- @vite(['resources/js/quest/quest-body/edit-questbody-modal.js']) --}}

@@ -91,18 +91,18 @@
 
                 {{-- spot introduction + map --}}
                 <div class="row text-center w-100 px-0 mx-0 pt-3 pt-md-5">
-                    <div class="col-md-4 spot-detail text-center d-flex flex-column ps-md-0 px-sm-0">
-                        <h5 class="poppins-semibold fs-4">Detail</h5>
+                    <div class="col spot-detail text-center d-flex flex-column ps-md-0 px-sm-0">
+                        <h5 class="poppins-semibold fs-4">Details</h5>
                         <hr class="dashed-hr">
                         <p class="text-start rounded-3 p-3 flex-grow-1 mb-2">{{ $spot->introduction }}</p>
                         <hr class="dashed-hr">
-                    </div>
+                    {{-- </div>
                     <div class="col-md-8 spot-map pe-md-0 ps-md-3 px-sm-0 py-0">
                         <h5 class="poppins-semibold fs-4">Map</h5>
                         <div id="map" class="spot-map-container w-100 rounded-3" data-lat="{{ $spot->geo_lat }}"
                             data-lng="{{ $spot->geo_lng }}">
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
 

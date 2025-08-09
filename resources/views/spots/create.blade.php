@@ -21,11 +21,11 @@
     </div>
     @endif
     <div class="col-9 pt-4">
-        <h3 class="color-navy poppins-semibold pb-5 pt-2">Add Spot</h3>
-
-        <div class="row row-cols-1 row-cols-md-2">
+        <div class="row justify-content-center">
+            
             {{-- left side --}}
-            <div class="col-12 col-md-6 add-spot-container">
+            <div class="col-8 add-spot-container">
+                <h3 class="color-navy poppins-semibold pb-5 pt-2">Add Spot</h3>
                 <form action="{{ route('spots.store') }}" method="POST" class="add-spot-form" id="spot-form" enctype="multipart/form-data">
                     @csrf
 
@@ -108,7 +108,7 @@
             </div>
 
             {{-- right side --}}
-            <div class="col-12 col-md-6 map-container">
+            {{-- <div class="col-12 col-md-6 map-container">
                 <label for="address" class="form-label">Search Symbol</label>
                 <div class="search-container d-flex pb-3 align-items-center">
                     <input type="text" id="address" placeholder="Input address " class="input-box me-2">
@@ -126,7 +126,7 @@
                 </div>
 
                 <div id="place-photo" class="place-photo mb-5 w-100 text-center"></div>
-            </div>
+            </div> --}}
         </div>
 
         {{-- submit button --}}

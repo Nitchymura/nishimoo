@@ -109,7 +109,7 @@
     </div>
 </div>
 
-@vite('resources/js/quest/quest/edit-quest-modal.js') 
+@vite('public/js/quest/quest/edit-quest-modal.js') 
 
 
 
