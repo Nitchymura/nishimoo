@@ -6,7 +6,7 @@
 
 <div class="{{ Auth::user()->role_id === 1 ? 'bg-green' : 'bg-blue' }}">
     <div class="container py-5 col-9">
-        <h3 class="color-navy poppins-semibold ">Add Quest</h3>
+        <h3 class="color-navy poppins-semibold ">Add Travel</h3>
         <section>
             <form action="{{ request('quest_id') ? route('quest.update', request('quest_id')) : route('quest.store') }}" method="POST" enctype="multipart/form-data" id="form1" class="bg-white rounded-2 p-5 my-3">
 
@@ -18,7 +18,7 @@
 
                 {{-- タイトル --}}
                 <div class="row pb-3">
-                    <label for="title" class="form-label">Quest Title</label>
+                    <label for="title" class="form-label">Travel Title</label>
                     <input type="text" name="title" id="title" class="input-box" placeholder="Kyoto Trip"
                         value="{{ old('title', $quest->title ?? '') }}">
                     @error('title')

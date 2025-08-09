@@ -14,7 +14,7 @@
 </script>
 <div class="{{ Auth::user()->role_id === 1 ? 'bg-green' : 'bg-blue' }}">
     <div class="container py-5 col-9">
-        <h3 class="color-navy poppins-semibold">Edit Quest</h3>
+        <h3 class="color-navy poppins-semibold">Edit Travel</h3>
             <section id="form2" class="reveal-section">
                 <form action="{{ route('questbody.store') }}" method="post" enctype="multipart/form-data" id="body_form" class="bg-white rounded-2 px-5 py-3 my-5">
                     @csrf

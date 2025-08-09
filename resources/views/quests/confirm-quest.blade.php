@@ -13,7 +13,7 @@
         Not yet published. This page is for confirmation only.
     </p>
     <div class="container py-5 col-9 px-0">
-        <h3 class="color-navy poppins-semibold text-center">Check Your Quest</h3>
+        <h3 class="color-navy poppins-semibold text-center">Check Your Travel</h3>
         {{-- <pre>{{ var_dump($questBodies) }}</pre> --}}
         {{-- HEADER --}}
         @php
@@ -63,16 +63,13 @@
             </div>
         </section>
 
-        <div class="px-0">
-            @include('quests.user-bar')
-        </div>
         {{-- AGENDA + MAP --}}
         <div class="container mt-5">
             <div class="row align-items-stretch p-0">
                 {{-- Agenda --}}
-                <div class="col-md-6 d-flex px-0" id="agenda-list">
+                <div class="col-md-12 d-flex px-0" id="agenda-list">
                     <div class="bg-white rounded-3 w-100 p-3 me-0 me-md-2 mb-3 mb-md-0">
-                        <h4 class="raleway-semibold fs-5 mb-3 text-center">Quest - Agenda</h4>
+                        <h4 class="raleway-semibold fs-5 mb-3 text-center">Travel - Agenda</h4>
                     
                         <div class="agenda-wrapper">
                             <ul class="list-unstyled">
@@ -101,22 +98,6 @@
                                 @endforeach
                             </ul>
                         </div>
-                    </div>
-                </div>
-
-                {{-- Map --}}
-                
-                <div class="col-md-6 px-0">
-                    <div class="bg-white rounded-3 container-fluid p-2">
-                        {{-- 地図用位置データ --}}
-                       
-                        <script>
-                            window.questMapLocations = @json($locations);
-                            console.log(window.questMapLocations); // ← こっちだけで十分！
-                        </script>
-
-                        <div id="map" style="height: 500px; width: 100%;"></div>
-
                     </div>
                 </div>
             </div>
@@ -184,7 +165,7 @@
                     </div>
                 @endforeach
             @else
-                <h4>No Entry. Please add Spots or businesses on your Quest!</h4>
+                <h4>No Entry.</h4>
             @endif
         </div>
 
@@ -228,14 +209,14 @@
         </div>
     </div>
     <!-- Go to Top Button -->
-    <div class="top-button-container">
+    {{-- <div class="top-button-container">
         <button class="top-button">
             <a href="#" class="text-decoration-none color-navy">
                 <i class="fa-solid fa-plane-up fs-3"></i>
                 <p class="color-navy m-0 p-0 text-center fs-8 poppins-semibold">Go TOP</p>
             </a>
         </button>
-    </div>
+    </div> --}}
 
 </div>
 
