@@ -151,5 +151,5 @@
         @endforelse         
     </div>
 </div>
-        @vite('resources/js/quest/comment/quest-comment.js')
+        {{-- @vite('resources/js/quest/comment/quest-comment.js') --}}
 
