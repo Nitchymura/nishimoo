@@ -584,11 +584,11 @@ class HomeController extends Controller
 
         // 並び替え
         $all = match($sort) {
-            'oldest' => $all->sortBy('created_at'),
+            'oldest' => $all->sortBy('term_start'),
             'comments'  => $all->sortByDesc('comments_count'),
             'views'  => $all->sortByDesc('views_sum'),
             'likes' => $all->sortByDesc('likes_count'),
-            default  => $all->sortByDesc('created_at'), 
+            default  => $all->sortByDesc('term_start'), 
         };
     
         $all = $all->values(); // キーをリセット（重要）
@@ -607,11 +607,11 @@ class HomeController extends Controller
 
         switch ($sort) {
             case 'oldest':
-                $all = $all->sortBy('created_at')->values();
+                $all = $all->sortBy('term_start')->values();
                 break;
             case 'latest':
             default:    
-                $all = $all->sortByDesc('created_at')->values();
+                $all = $all->sortByDesc('term_start')->values();
                 break;                           
             case 'comments':
                 $all = $all->sortByDesc('comments_count')->values();
@@ -670,11 +670,11 @@ public function showQuests(Request $request){
     });
 
     $quests = match($sort) {
-        'oldest' => $quests->sortBy('created_at'),
+        'oldest' => $quests->sortBy('term_start'),
         'comments'  => $quests->sortByDesc('comments_count'),
         'views'  => $quests->sortByDesc('views_sum'),
         'likes' => $quests->sortByDesc('likes_count'),
-        default  => $quests->sortByDesc('created_at'), 
+        default  => $quests->sortByDesc('term_start'), 
     };
 
     $quests = $quests->values(); // キーをリセット（重要）
@@ -693,11 +693,11 @@ public function showQuests(Request $request){
 
     switch ($quests) {
         case 'oldest':
-            $quests = $quests->sortBy('created_at')->values();
+            $quests = $quests->sortBy('term_start')->values();
             break;
         case 'latest':
         default:              
-            $quests = $quests->sortByDesc('created_at')->values();
+            $quests = $quests->sortByDesc('term_start')->values();
             break;                           
         case 'comments':
             $quests = $quests->sortByDesc('comments_count')->values();
@@ -753,11 +753,11 @@ public function showQuests(Request $request){
         });
 
         $spots = match($sort) {
-            'oldest' => $spots->sortBy('created_at'),
+            'oldest' => $spots->sortBy('term_start'),
             'comments'  => $spots->sortByDesc('comments_count'),
             'views'  => $spots->sortByDesc('views_sum'),
             'likes' => $spots->sortByDesc('likes_count'),
-            default  => $spots->sortByDesc('created_at'), 
+            default  => $spots->sortByDesc('term_start'), 
             };
     
         $spots = $spots->values(); // キーをリセット（重要）
@@ -776,11 +776,11 @@ public function showQuests(Request $request){
     
         switch ($sort) {
             case 'oldest':
-                $spots = $spots->sortBy('created_at')->values();
+                $spots = $spots->sortBy('term_start')->values();
                 break;
             case 'latest':
             default:                   
-                $spots = $spots->sortByDesc('created_at')->values();
+                $spots = $spots->sortByDesc('term_start')->values();
                 break;                           
             case 'comments':
                 $spots = $spots->sortByDesc('comments_count')->values();
@@ -844,11 +844,11 @@ public function showQuests(Request $request){
         });
         
         $locations = match($sort) {
-            'oldest' => $locations->sortBy('created_at'),
+            'oldest' => $locations->sortBy('term_start'),
             'comments'  => $locations->sortByDesc('comments_count'),
             'views'  => $locations->sortByDesc('views_sum'),
             'likes' => $locations->sortByDesc('likes_count'),
-            default  => $locations->sortByDesc('created_at'), 
+            default  => $locations->sortByDesc('term_start'), 
         };
     
         $locations = $locations->values(); // キーをリセット（重要）
@@ -867,11 +867,11 @@ public function showQuests(Request $request){
 
         switch ($sort) {
             case 'oldest':
-                $locations = $locations->sortBy('created_at')->values();
+                $locations = $locations->sortBy('term_start')->values();
                 break;
             case 'latest':
             default:                 
-                $locations = $locations->sortByDesc('created_at')->values();
+                $locations = $locations->sortByDesc('term_start')->values();
                 break;                           
             case 'comments':
                 $locations = $locations->sortByDesc('comments_count')->values();
@@ -936,11 +936,11 @@ public function showQuests(Request $request){
         });
 
         $events = match($sort) {
-            'oldest' => $events->sortBy('created_at'),
+            'oldest' => $events->sortBy('term_start'),
             'comments'  => $events->sortByDesc('comments_count'),
             'views'  => $events->sortByDesc('views_sum'),
             'likes' => $events->sortByDesc('likes_count'),
-            default  => $events->sortByDesc('created_at'), 
+            default  => $events->sortByDesc('term_start'), 
         };
     
         $events = $events->values(); // キーをリセット（重要）
@@ -959,11 +959,11 @@ public function showQuests(Request $request){
     
         switch ($sort) {
             case 'oldest':
-                $events = $events->sortBy('created_at')->values();
+                $events = $events->sortBy('term_start')->values();
                 break;
             case 'latest':
             default:                 
-                $events = $events->sortByDesc('created_at')->values();
+                $events = $events->sortByDesc('term_start')->values();
                 break;                           
             case 'comments':
                 $events = $events->sortByDesc('comments_count')->values();
@@ -1027,11 +1027,11 @@ public function showQuests(Request $request){
         });
 
         $others = match($sort) {
-            'oldest' => $others->sortBy('created_at'),
+            'oldest' => $others->sortBy('term_start'),
             'comments'  => $others->sortByDesc('comments_count'),
             'views'  => $others->sortByDesc('views_sum'),
             'likes' => $others->sortByDesc('likes_count'),
-            default  => $others->sortByDesc('created_at'), 
+            default  => $others->sortByDesc('term_start'), 
         };
     
         $others = $others->values(); // キーをリセット（重要）
@@ -1050,11 +1050,11 @@ public function showQuests(Request $request){
     
         switch ($sort) {
             case 'oldest':
-                $others = $others->sortBy('created_at')->values();
+                $others = $others->sortBy('term_start')->values();
                 break;
             case 'latest':
             default:                 
-                $others = $others->sortByDesc('created_at')->values();
+                $others = $others->sortByDesc('term_start')->values();
                 break;                           
             case 'comments':
                 $others = $others->sortByDesc('comments_count')->values();
@@ -1118,11 +1118,11 @@ public function showQuests(Request $request){
         });
 
         $travels = match($sort) {
-            'oldest' => $travels->sortBy('created_at'),
+            'oldest' => $travels->sortBy('term_start'),
             'comments'  => $travels->sortByDesc('comments_count'),
             'views'  => $travels->sortByDesc('views_sum'),
             'likes' => $travels->sortByDesc('likes_count'),
-            default  => $travels->sortByDesc('created_at'), 
+            default  => $travels->sortByDesc('term_start'), 
         };
     
         $travels = $travels->values(); // キーをリセット（重要）
@@ -1141,11 +1141,11 @@ public function showQuests(Request $request){
     
         switch ($sort) {
             case 'oldest':
-                $travels = $travels->sortBy('created_at')->values();
+                $travels = $travels->sortBy('term_start')->values();
                 break;
             case 'latest':
             default:                 
-                $travels = $travels->sortByDesc('created_at')->values();
+                $travels = $travels->sortByDesc('term_start')->values();
                 break;                           
             case 'comments':
                 $travels = $travels->sortByDesc('comments_count')->values();
