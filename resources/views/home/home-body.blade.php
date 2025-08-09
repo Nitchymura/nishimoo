@@ -49,6 +49,8 @@
                                 Beer
                             @elseif ($class == 'Businesses' || $post->category_id == '6')
                                 Others
+                            @elseif ($class == 'Businesses' || $post->category_id == '7')
+                                Travels
                             @endif
                         </strong>
                     </h5>
