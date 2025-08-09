@@ -29,4 +29,4 @@
     </div>
 
 
-@vite(['resources/js/home/home.js'])
+{{-- @vite(['resources/js/home/home.js']) --}}
