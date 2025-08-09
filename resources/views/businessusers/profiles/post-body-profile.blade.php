@@ -70,7 +70,7 @@
             <div class="row mb-3">
                 {{-- @if ($post['type']== 'businesses') --}}
                 <!-- Category -->
-                    <div class="col-md-auto col-sm-12 p-0">                      
+                    <div class="col text-end">                      
                         @if($post['category_id']==1)
                             <h5 class="card-subtitle">Category: <strong>Figure Skate</strong></h5>
                         @elseif($post['category_id']==2)
@@ -122,7 +122,7 @@
 
             <div class="row">
                 {{-- Postdate --}}
-                <div class="col-md-auto col-sm-12">
+                <div class="col ps-0">
                     @if ($post['term_start'] && $post['term_end'] && $post['term_start'] != $post['term_end'])
                         {{ date('M d, Y', strtotime($post['term_start'])) }} ~ {{ date('M d, Y', strtotime($post['term_end'])) }}
                     @else

@@ -47,7 +47,7 @@
             <div class="row mb-3">
                 @if (Request::is('home/posts/all*') || Request::is('home/posts/followings*'))
                 {{-- Category --}}
-                    <div class="col-md-auto col-sm-12 p-0 me-0">
+                    <div class="col p-0 me-0 text-end">
                         <h5 class="card-subtitle">Category: 
                             @if($post['tab_id']==3)
                                 <strong>Figure Skate</strong>
@@ -87,7 +87,7 @@
             </div>
             <div class="row">
                 {{-- Postdate --}}
-                <div class="col-md-auto col-sm-12 ms-5">
+                <div class="col ps-0">
                     {{-- @if($post['type'] == 'quests') --}}
                         @if ($post['term_start'] && $post['term_end'] && $post['term_start'] != $post['term_end'])
                             {{ date('M d, Y', strtotime($post['term_start'])) }} ~ {{ date('M d, Y', strtotime($post['term_end'])) }}
