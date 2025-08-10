@@ -165,6 +165,7 @@
             </div>
             
             {{-- Heart icon & Like function --}}
+            {{-- @auth --}}
             <div class="row align-items-center ">
                 <div class="col-1 ms-2 p-0 mt-3">
                     {{-- like/heart button --}}
@@ -173,6 +174,7 @@
                             $likeDeleteRoute = $post['type'] . '.like.delete';
                         @endphp
                         {{-- red heart/unlike --}}
+                        @auth
                         <form action="{{ route($likeDeleteRoute, $post['id']) }}" method="post">
                             @csrf
                             @method('DELETE')
@@ -180,16 +182,29 @@
                                 <i class="fa-solid fa-heart home color-red {{ $post['is_liked'] ? 'text-danger' : 'text-secondary' }}" ></i>
                             </button>
                         </form>
+                        @endauth
+                        @guest
+                            <button type="" class="btn p-0">
+                                <i class="fa-solid fa-heart home color-red {{ $post['is_liked'] ? 'text-danger' : 'text-secondary' }}" ></i>
+                            </button>
+                        @endguest
                     @else
                         @php
                             $likeStoreRoute = $post['type'] . '.like.store'; // 例: 'quest.like.store'
                         @endphp
+                        @auth
                         <form action="{{ route($likeStoreRoute, $post['id']) }}" method="post">
                             @csrf
                             <button type="sumbit" class="btn p-0">
                                 <i class="fa-regular fa-heart home"></i>
                             </button>
                         </form>
+                        @endauth
+                        @guest
+                            <button type="" class="btn p-0 mb-3">
+                                <i class="fa-regular fa-heart home"></i>
+                            </button>
+                        @endguest
                     @endif
                 </div>
 
@@ -222,6 +237,7 @@
                     </button>
                 </div> --}}
             </div>
+            {{-- @endauth --}}
 
             {{-- Description of posts --}}
             <div class="row">

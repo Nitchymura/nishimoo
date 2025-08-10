@@ -66,7 +66,7 @@
 
 .card-body.content-lg{
     display: flow-root;
-    height:310px;
+    height:310px ;
     margin-bottom: 20px;
     overflow: hidden;
 }
@@ -273,5 +273,11 @@
     }
     .header-icon-lg{
         height: 0rem;
+    }
+    .card-body.content-lg{
+    display: flow-root;
+    height: auto;
+    margin-bottom: 20px;
+    overflow: hidden;
     }
 }
