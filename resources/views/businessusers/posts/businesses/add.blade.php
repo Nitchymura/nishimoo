@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Add A Business - Location or Event')
+@section('title', 'Add Favorite')
 
 @section('content')
 <link rel="stylesheet" href="{{asset('css/style.css')}}"  /> 

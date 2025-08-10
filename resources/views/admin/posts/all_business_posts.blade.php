@@ -16,13 +16,13 @@
                 {{-- <th class="align-middle">ID</th> --}}
                 <th></th>
                 <th class="align-middle">Title</th>
-                <th class="align-middle">User name</th>
+                <th class="align-middle">Category</th>
                 {{-- <th>Email</th> --}}
                 <th rowspan="2">
                     <form method="GET" action="" class="d-inline-block ms-2">
                         <label for="sort" class=""></label>
                         <select name="sort" id="sort" onchange="this.form.submit()" class="bg-skyblue-thead mt-3 text-sm">
-                            <option value="" disabled selected>POSTED AT</option>
+                            <option value="" disabled selected>date</option>
                             <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>FROM LATEST</option>
                             <option value="oldest" {{ request('sort') == 'oldest' ? 'selected' : '' }}>FROM OLDEST</option>
                         </select>
@@ -58,16 +58,25 @@
                         @endif
                     </td>
                     <td class="align-middle">
-                        <a href="{{route('profile.header', $post->user->id)}}" class="text-decoration-none text-dark">{{$post->user->name}}</a>
+                            @if($post->category_id==1)
+                                Figure Skate
+                            @elseif($post->category_id==2)
+                                Beer
+                            @elseif($post->category_id==6)
+                                Others
+                            @elseif($post->category_id==7)
+                                Travel
+                            @endif
+
                     </td>
                     {{-- <td>
                         {{ $user->email }}
                     </td> --}}
                     <td>
-                        @if($post->updated_at)
-                            {{date('M d, Y H:i:s', strtotime($post->updated_at))}}
+                        @if($post->term_start)
+                            {{date('M d, Y', strtotime($post->term_start))}}
                         @else
-                            {{date('M d, Y H:i:s', strtotime($post->created_at))}}
+                            --
                         @endif
                     </td>
                     

@@ -16,11 +16,11 @@
                     <div class="col-3">
                         <h4>User list</h4>
                         <div class="list-group mb-3">                               
-                            <a href="{{ route('admin.users.business') }}" class="list-group-item {{ request()->is('admin/users/business*') ? 'active' : '' }}">
+                            {{-- <a href="{{ route('admin.users.business') }}" class="list-group-item {{ request()->is('admin/users/business*') ? 'active' : '' }}">
                                 <i class="fa-solid fa-users"></i> Business Users
-                            </a>
+                            </a> --}}
                             <a href="{{ route('admin.users.tourists') }}" class="list-group-item {{ request()->is('admin/users/tourists*') ? 'active' : '' }}">
-                                <i class="fa-solid fa-users"></i> Tourists
+                                <i class="fa-solid fa-users"></i> Users
                             </a>
                             <a href="{{ route('admin.users.applied') }}" class="list-group-item d-flex justify-content-between align-items-center {{ request()->is('admin/users/applied*') ? 'active' : '' }}">
                                 <i class="fa-solid fa-certificate"></i> Badge Applied Users
@@ -38,7 +38,7 @@
                         <div class="list-group mb-3">
                             
                             <a href="{{ route('admin.posts') }}" class="list-group-item {{ request()->is('admin/posts/business*') ? 'active' : '' }}">
-                                <i class="fa-solid fa-images"></i> Business Posts
+                                <i class="fa-solid fa-images"></i> Posts
                             </a>
                             <a href="{{ route('admin.posts.tourists') }}" class="list-group-item {{ request()->is('admin/posts/tourists*') ? 'active' : '' }}">
                                 <i class="fa-solid fa-images"></i> Other Posts

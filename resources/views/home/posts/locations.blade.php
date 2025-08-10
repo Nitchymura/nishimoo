@@ -1,7 +1,7 @@
 <div class="bg-green">
 @extends('layouts.app')
 
-@section('title', 'Locations')
+@section('title', 'Figure Skate')
 
 @section('content')
 

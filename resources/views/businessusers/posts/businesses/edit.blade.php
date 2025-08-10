@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit A Business - Location or Event')
+@section('title', 'Edit Favorite')
 
 @section('content')
     <link rel="stylesheet" href="{{asset('css/style.css')}}"  /> 
@@ -41,7 +41,7 @@
                         <div class="mb-3">
                             <!-- 現在の選択に基づいて初期表示 -->
                             <label for="name" class="form-label d-inline" id="name-label">
-                                {{ (old('category_id', $business->category_id) == 2) ? 'Event' : 'Location' }} Name<span style="color: #D24848;">*</span>
+                                {{ old('category_id')}} Name
                             </label>
                             <input type="text" name="name" id="name" value="{{ old('name', $business->name ?? '') }}" class="form-control">
                         </div>

@@ -1,7 +1,7 @@
 <div class="bg-green">
 @extends('layouts.app')
 
-@section('title', 'All')
+@section('title', 'Home')
 {{-- @section('css')
     <link rel="stylesheet" href="{{ asset('css/home.css')}}">
     <link rel="stylesheet" href="{{ asset('css/home-cards.css')}}">
